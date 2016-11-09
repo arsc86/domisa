@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}
+    <script src="{{ asset('./bundles/App/js/administracion/acceso/index.js') }}"></script>
+{% endblock %} 
+ 
+{% block contenido %}
+    <div id="page-wrapper">
+            <br>           
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-key"></i>&nbsp;<b style="font-size: 16px;">Grupos de Accesos</b>                
+                <a href="{{path('newAcceso')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                   <!-- <div class="table-responsive">-->
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="accesoDataTable" >
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Grupo</th>
+                                    <th>Usuario</th>
+                                    <th>Clave</th>
+                                    <th>Estado</th>
+                                    <th>Usuario Ingreso</th>
+                                    <th>Fecha Ingreso</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set cont = 1 %} 
+                                {% for acceso in accesos %}
+                                <tr>
+                                    <td>{{cont}}</td>
+                                    <td>{{acceso.nombreAcceso}}</td>
+                                    <td>{{acceso.usuarioAcceso}}</td>
+                                    <td>{{acceso.claveAcceso}}</td>
+                                    <td>{{acceso.estado}}</td>
+                                    <td>{{acceso.usrCreacion}}</td>
+                                    <td>{{acceso.feCreacion | date('m/d/Y H:i:s')}}</td>
+                                    <td>
+                                        <a class="fa fa-pencil" href="{{path('editAcceso',{'id':acceso.idAcceso})}}"></a>&nbsp;
+                                        <a class="fa fa-times" href="{{path('deleteAcceso',{'id':acceso.idAcceso})}}"></a>
+                                    </td>
+                                </tr>
+                                    {% set cont = cont + 1 %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+{% endblock contenido%}

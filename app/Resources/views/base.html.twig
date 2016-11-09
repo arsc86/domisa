@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset='utf-8'">
+        <title>{% block title %}Monitoreo{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+            <link href="{{ asset('public/js/jquery-ui/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.cssabs') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/dist/css/timeline.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/dist/css/sb-admin-2.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/morrisjs/morris.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/font-awesome/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css ') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/plugins/bootstrap/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('./bundles/App/css/general.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('public/css/jquery.alerts.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock stylesheets%}
+        {% block javascripts%}
+            
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/jquery/dist/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/raphael/raphael-min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/morrisjs/morris.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/js/morris-data.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/dist/js/sb-admin-2.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/plugins/bootstrap/bower_components/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/js/jquery-ui/jquery-ui.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('./public/js/general.js') }}"></script>
+            
+        {% endblock javascripts%}
+    </head>
+    <body>
+        <div id="wrapper">
+            
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            {% block topBar %}
+                {% include "::top_bar.html.twig" %}
+            {% endblock topBar%}
+                  
+            {% block menuBar %}
+                {% include "::menu_bar.html.twig" %}
+            {% endblock menuBar%}
+            </nav>
+           
+            {% block contenido %}
+                {% include "::contenido.html.twig" %}
+            {% endblock contenido%}
+                
+            {% block footer %}
+                {% include "::footer.html.twig" %}
+            {% endblock footer%}
+        </div> 
+    </body>
+</html>

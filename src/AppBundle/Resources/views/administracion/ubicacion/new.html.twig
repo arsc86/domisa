@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}       
+        <script src="{{ asset('./bundles/App/js/administracion/ubicacion/index.js') }}"></script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formUbicacion" action="{{path('createUbicacion')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker"></i>&nbsp;Crear Nueva Ubicacion
+                        <a href="{{path('adminUbicacion')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >                            
+                            <tr>
+                                <td><label>Nombre Ubicacion:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreUbicacion">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Descripcion:</label></td>
+                                <td>
+                                    <textarea class="form-control" type="text" name="descripcionUbicacion"></textarea>
+                                </td>
+                            </tr>                             
+                            <tr><td>&nbsp;</td></tr>
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Guardar Ubicacion" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

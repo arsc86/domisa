@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}       
+        <script src="{{ asset('./bundles/App/js/administracion/equipos/index.js') }}"></script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formEquipos" action="{{path('createEquipo')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-hdd-o"></i>&nbsp;Crear Nuevo Equipo
+                        <a href="{{path('adminEquipo')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >
+                            <tr>
+                                <td><label>Nombre Equipo:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreEquipo">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Descripcion Equipo:</label></td>
+                                <td>
+                                    <input class="form-control" name="descripcionEquipo">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Ubicacion:</label></td>
+                                <td>
+                                        <select class="form-control" id="ubicacionEquipo" name="ubicacionEquipo">
+                                            <option value="na">Escoja una Ubicacion</option>
+                                        {% for ubicacion in ubicaciones %}
+                                                <option value="{{ubicacion.idUbicacion}}">{{ubicacion.nombre}} - {{ubicacion.descripcion}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Tipo Equipo:</label></td>
+                                <td>
+                                    <select class="form-control" id="tipoEquipo" name="tipoEquipo">                                        
+                                       <option value="SWITCH">SWITCH</option>  
+                                       <option value="ROUTER">ROUTER</option>                                       
+                                    </select>
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>IP:</label></td>
+                                <td>
+                                    <input class="form-control" name="ipEquipo">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Grupo de Acceso:</label></td>
+                                <td>
+                                        <select class="form-control" id="acceso" name="acceso">
+                                            <option value="na">Escoja un grupo de acceso</option>
+                                        {% for acceso in accesos %}
+                                                <option value="{{acceso.idAcceso}}">{{acceso.nombreAcceso}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Guardar Equipo" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

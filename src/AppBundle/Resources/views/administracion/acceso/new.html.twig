@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}       
+        <script src="{{ asset('./bundles/App/js/administracion/acceso/index.js') }}"></script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formAcceso" action="{{path('createAcceso')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-key"></i>&nbsp;Crear Nuevo Grupo de Acceso
+                        <a href="{{path('adminAcceso')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >                            
+                            <tr>
+                                <td><label>Nombre Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreAcceso">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Usuario Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="usuarioAcceso">
+                                </td>
+                            </tr>                             
+                            <tr><td>&nbsp;</td></tr>
+                             <tr>
+                                <td><label>Clave Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="claveAcceso">
+                                </td>
+                            </tr>                             
+                            <tr><td>&nbsp;</td></tr>
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Guardar Acceso" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

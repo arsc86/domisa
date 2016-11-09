@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InfoJob" table="INFO_JOB">
+    <indexes>
+      <index name="SCRIPT_ID_idx" columns="SCRIPT_ID"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ID_JOB_UNIQUE" columns="ID_JOB"/>
+    </unique-constraints>
+    <id name="idJob" type="integer" column="ID_JOB">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tipo" type="string" column="TIPO" length="10" nullable="false"/>
+    <field name="nombreJob" type="string" column="NOMBRE_JOB" length="80" nullable="false"/>
+    <field name="estado" type="string" column="ESTADO" length="20" nullable="false"/>
+    <field name="feEjecucion" type="datetime" column="FE_EJECUCION" nullable="false"/>
+    <field name="intervalo" type="integer" column="INTERVALO" nullable="false"/>
+    <field name="duracion" type="string" column="DURACION" length="20" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+    <many-to-one field="script" target-entity="InfoScript">
+      <join-columns>
+        <join-column name="SCRIPT_ID" referenced-column-name="ID_SCRIPT"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

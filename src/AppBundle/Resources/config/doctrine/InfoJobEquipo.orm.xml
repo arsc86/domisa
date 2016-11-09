@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InfoJobEquipo" table="INFO_JOB_EQUIPO">
+    <indexes>
+      <index name="JOB_ID_idx" columns="JOB_ID"/>
+      <index name="EQUIPO_ID_idx" columns="EQUIPO_ID"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ID_JOB_EQUIPO_UNIQUE" columns="ID_JOB_EQUIPO"/>
+    </unique-constraints>
+    <id name="idJobEquipo" type="integer" column="ID_JOB_EQUIPO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="estado" type="string" column="ESTADO" length="20" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+    <many-to-one field="job" target-entity="InfoJob">
+      <join-columns>
+        <join-column name="JOB_ID" referenced-column-name="ID_JOB"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="equipo" target-entity="InfoEquipo">
+      <join-columns>
+        <join-column name="EQUIPO_ID" referenced-column-name="ID_EQUIPO"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

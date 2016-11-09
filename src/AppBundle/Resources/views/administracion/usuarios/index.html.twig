@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}
+    <script src="{{ asset('./bundles/App/js/administracion/usuarios/index.js') }}"></script>
+{% endblock %} 
+ 
+{% block contenido %}
+    <div id="page-wrapper">
+            <br>           
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-users"></i>&nbsp;<b style="font-size: 16px;">Usuarios</b>                
+                <a href="{{path('newUsuario')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                   <!-- <div class="table-responsive">-->
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="usuariosDataTable" >
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Rol</th>
+                                    <th>Nombres</th>
+                                    <th>User</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Ingreso</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set cont = 1 %} 
+                                {% for usuario in usuarios %}
+                                <tr>
+                                    <td>{{cont}}</td>
+                                    <td>{{usuario.rol.nombreRol}}</td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.user}}</td>
+                                    <td>{{usuario.estado}}</td>
+                                    <td>{{usuario.feCreacion | date('m/d/Y H:i:s')}}</td>
+                                    <td>
+                                        <a class="fa fa-pencil" href="{{path('editUsuario',{'id':usuario.idUsuario})}}"></a>&nbsp;
+                                        <a class="fa fa-times" href="{{path('deleteUsuario',{'id':usuario.idUsuario})}}"></a>
+                                    </td>
+                                </tr>
+                                    {% set cont = cont + 1 %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+{% endblock contenido%}

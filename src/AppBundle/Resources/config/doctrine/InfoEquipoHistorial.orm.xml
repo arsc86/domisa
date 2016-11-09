@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InfoEquipoHistorial" table="INFO_EQUIPO_HISTORIAL">
+    <indexes>
+      <index name="EQUIPO_ID_idx" columns="EQUIPO_ID"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ID_EQUIPO_HITORIAL_UNIQUE" columns="ID_EQUIPO_HITORIAL"/>
+    </unique-constraints>
+    <id name="idEquipoHitorial" type="integer" column="ID_EQUIPO_HITORIAL">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="observacion" type="blob" column="OBSERVACION" length="65535" nullable="true"/>
+    <field name="estado" type="string" column="ESTADO" length="20" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+    <many-to-one field="equipo" target-entity="InfoEquipo">
+      <join-columns>
+        <join-column name="EQUIPO_ID" referenced-column-name="ID_EQUIPO"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

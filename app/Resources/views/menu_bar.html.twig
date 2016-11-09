@@ -1,0 +1,50 @@
+{# empty Twig template #}
+<div id="sidebar"class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">                     
+            <li>
+                <a href="{{ path('dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-tasks fa-fw"></i> Jobs<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="">Nuevo Job</a>
+                    </li>
+                    <li>
+                        <a href="">Consultar Job</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href=""><i class="fa fa-gear fa-fw"></i> Operaciones</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-files-o fa-fw"></i> Reportes</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-wrench fa-fw"></i> Administrar Backbone<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{path('adminAcceso')}}">Grupos de Acceso</a>
+                    </li>
+                    <li>
+                        <a href="{{path('adminEquipo')}}">Equipos</a>
+                    </li>
+                    <li>
+                        <a href="{{path('adminUbicacion')}}">Ubicacion</a>
+                    </li>
+                    <li>
+                        <a href="">Scripts</a>
+                    </li>                   
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="{{path('adminUser')}}"><i class="fa fa-user fa-fw"></i> Administrar Usuarios</a>
+            </li>                        
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

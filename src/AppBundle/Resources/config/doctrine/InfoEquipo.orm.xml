@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InfoEquipo" table="INFO_EQUIPO">
+    <indexes>
+      <index name="UBICACION_ID_idx" columns="UBICACION_ID"/>
+    </indexes>
+    <indexes>
+      <index name="ACCESO_ID_idx" columns="ACCESO_ID"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="ID_EQUIPO_UNIQUE" columns="ID_EQUIPO"/>
+    </unique-constraints>
+    <id name="idEquipo" type="integer" column="ID_EQUIPO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="NOMBRE" length="50" nullable="false"/>
+    <field name="descripcion" type="string" column="DESCRIPCION" length="100" nullable="true"/>
+    <field name="tipo" type="string" column="TIPO" length="10" nullable="false"/>
+    <field name="ip" type="string" column="IP" length="20" nullable="false"/>
+    <field name="status" type="string" column="STATUS" length="10" nullable="false"/>
+    <field name="estado" type="string" column="ESTADO" length="20" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+    <many-to-one field="ubicacion" target-entity="AdmiUbicacion">
+      <join-columns>
+        <join-column name="UBICACION_ID" referenced-column-name="ID_UBICACION"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="acceso" target-entity="AdmiAcceso">
+      <join-columns>
+        <join-column name="ACCESO_ID" referenced-column-name="ID_ACCESO"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}       
+        <script src="{{ asset('./bundles/App/js/administracion/usuarios/index.js') }}"></script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formUsuarios" action="{{path('createUsuario')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-user"></i>&nbsp;Crear Nuevo Usuario
+                        <a href="{{path('adminUser')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >
+                            <tr>
+                                <td><label>Tipo Rol:</label></td>
+                                <td>
+                                    <select class="form-control" id="tipoRol" name="tipoRol">
+                                        {% for rol in roles %}
+                                            <option value="{{rol.idRol}}">{{rol.nombreRol}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Nombre Usuario:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreUsuario">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Login Usuario:</label></td>
+                                <td>
+                                    <input class="form-control" name="loginUsuario">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Contrasena:</label></td>
+                                <td>
+                                    <input type="password" class="form-control" name="passwordUsuario">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Guardar Usuario" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

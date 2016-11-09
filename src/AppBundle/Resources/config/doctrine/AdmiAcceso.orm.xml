@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AdmiAcceso" table="ADMI_ACCESO" 
+          repository-class="AppBundle\Repository\AdmiAccesoRepository">
+    <unique-constraints>
+      <unique-constraint name="ID_ACCESO_UNIQUE" columns="ID_ACCESO"/>
+    </unique-constraints>
+    <repositoryClass></repositoryClass>
+    <id name="idAcceso" type="integer" column="ID_ACCESO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreAcceso" type="string" column="NOMBRE_ACCESO" length="50" nullable="false"/>
+    <field name="usuarioAcceso" type="string" column="USUARIO_ACCESO" length="45" nullable="false"/>
+    <field name="claveAcceso" type="string" column="CLAVE_ACCESO" length="100" nullable="false"/>
+    <field name="estado" type="string" column="ESTADO" length="45" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+  </entity>
+</doctrine-mapping>

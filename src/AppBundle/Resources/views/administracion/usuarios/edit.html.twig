@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}             
+        <script src="{{ asset('./bundles/App/js/administracion/usuarios/edit.js') }}"></script>
+        <script>
+            var idRol = '{{usuario.rol.idRol}}';
+        </script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formUsuariosEdit" action="{{path('updateUsuario')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-user"></i>&nbsp;Editar Usuario
+                        <a href="{{path('adminUser')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >
+                            <tr>
+                                <td><label>Tipo Rol:</label></td>
+                                <td>
+                                    <select class="form-control" id="tipoRol" name="tipoRol">
+                                        {% for rol in roles %}
+                                            <option value="{{rol.idRol}}">{{rol.nombreRol}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Nombre Usuario:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreUsuario" value="{{usuario.nombre}}">
+                                </td>
+                            </tr>                  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" type="hidden" name="idUsuario" value="{{usuario.idUsuario}}">
+                                </td>
+                            </tr> 
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Editar Usuario" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

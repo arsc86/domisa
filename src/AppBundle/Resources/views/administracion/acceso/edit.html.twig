@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}             
+        <script src="{{ asset('./bundles/App/js/administracion/acceso/edit.js') }}"></script>       
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formAccesoEdit" action="{{path('updateAcceso')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-key"></i>&nbsp;Editar Grupo de Acceso
+                        <a href="{{path('adminAcceso')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >                            
+                            <tr>
+                                <td><label>Nombre Grupo Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreAcceso" value="{{acceso.nombreAcceso}}">
+                                </td>
+                            </tr>                  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Usuario de Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="usuarioAcceso" value="{{acceso.usuarioAcceso}}">
+                                </td>
+                            </tr>                  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Clave de Acceso:</label></td>
+                                <td>
+                                    <input class="form-control" name="claveAcceso" value="{{acceso.claveAcceso}}">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" type="hidden" name="idAcceso" value="{{acceso.idAcceso}}">
+                                </td>
+                            </tr> 
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Editar Acceso" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

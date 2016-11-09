@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}             
+        <script src="{{ asset('./bundles/App/js/administracion/ubicacion/edit.js') }}"></script>       
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formUbicacionEdit" action="{{path('updateUbicacion')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-map-marker"></i>&nbsp;Editar Ubicacion
+                        <a href="{{path('adminUbicacion')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >                            
+                            <tr>
+                                <td><label>Nombre Ubicacion:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreUbicacion" value="{{ubicacion.nombre}}">
+                                </td>
+                            </tr>                  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Descripcion:</label></td>
+                                <td>
+                                    <textarea class="form-control" name="descripcionUbicacion" value="">{{ubicacion.descripcion}}</textarea>
+                                </td>
+                            </tr>                  
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" type="hidden" name="idUbicacion" value="{{ubicacion.idUbicacion}}">
+                                </td>
+                            </tr> 
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Editar Ubicacion" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

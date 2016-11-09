@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\InfoScript" table="INFO_SCRIPT">
+    <unique-constraints>
+      <unique-constraint name="ID_SCRIPT_UNIQUE" columns="ID_SCRIPT"/>
+    </unique-constraints>
+    <id name="idScript" type="integer" column="ID_SCRIPT">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreScript" type="string" column="NOMBRE_SCRIPT" length="45" nullable="false"/>
+    <field name="descripcion" type="string" column="DESCRIPCION" length="100" nullable="true"/>
+    <field name="script" type="blob" column="SCRIPT" length="65535" nullable="false"/>
+    <field name="estado" type="string" column="ESTADO" length="20" nullable="false"/>
+    <field name="feCreacion" type="datetime" column="FE_CREACION" nullable="false"/>
+    <field name="usrCreacion" type="string" column="USR_CREACION" length="45" nullable="false"/>
+  </entity>
+</doctrine-mapping>
