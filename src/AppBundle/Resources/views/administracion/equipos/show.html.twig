@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}
+    <script src="{{ asset('./bundles/App/js/administracion/equipos/index.js') }}"></script>
+{% endblock %} 
+ 
+{% block contenido %}
+    <div id="page-wrapper">
+            <br>           
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-shield"></i>&nbsp;<b>Resumen de Equipo</b>                
+                <a href="{{path('adminEquipo')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel-body">
+                
+                   
+                        <table width="50%" >                            
+                            <body>                                
+                                <tr>
+                                    <td><b>Nombre Equipo</b>:</td>
+                                    <td>{{equipo.nombre}}</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                <tr>
+                                    <td><b>Tipo Equipo</b>:</td>
+                                    <td>{{equipo.tipo}}</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                 <tr>
+                                    <td><b>Ip Equipo</b>:</td>
+                                    <td>{{equipo.ip}}</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                <tr>
+                                    <td><b>Ubicacion Equipo</b>:</td>
+                                    <td>{{equipo.ubicacion.nombre}}</td>                                   
+                                </tr> 
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                <tr>
+                                    <td><b>Descripcion</b>:</td>
+                                    <td>{{equipo.descripcion}}</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                <tr>
+                                    <td><b>Status Equipo</b>:</td>
+                                    <td>{{equipo.status}}</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>                                                                     
+                                </tr>
+                                <tr>
+                                    <td><b>Estado Equipo</b>:</td>
+                                    <td>{{equipo.estado}}</td>                                   
+                                </tr>
+                            </body>
+                        </table>
+                  
+
+                </div>
+                
+            </div>
+        </div>
+{% endblock contenido%}

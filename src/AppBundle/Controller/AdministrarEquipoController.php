@@ -26,8 +26,14 @@ class AdministrarEquipoController extends Controller
     /**
      * @Route("/showEquipo/{id}", name="showEquipo")
      */
-    public function showEquipoAction()
+    public function showEquipoAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $objEquipo = $em->getRepository("AppBundle:InfoEquipo")->find($id);
+        
+        return $this->render('AppBundle:administracion/equipos:show.html.twig',
+                             array('equipo'     =>$objEquipo)); 
         
     }
     
