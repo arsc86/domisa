@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}       
+        <script src="{{ asset('./bundles/App/js/administracion/scripts/index.js') }}"></script>
+{% endblock %} 
+{% block contenido %}
+        <div id="page-wrapper">
+            <br>           
+            <form id="formScripts" action="{{path('createScript')}}" method="post" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-file-code-o"></i>&nbsp;Crear Nuevo Script de Ejecucion
+                        <a href="{{path('adminScript')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <table style="width: 50%;position: relative;left:20%;" >
+                            <tr>
+                                <td><label>Nombre Script:</label></td>
+                                <td>
+                                    <input class="form-control" name="nombreScript">
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Descripcion Script:</label></td>
+                                <td>
+                                    <input class="form-control" name="descripcionScript">
+                                </td>
+                            </tr>                             
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td><label>Script:</label></td>
+                                <td>
+                                    <textarea class="form-control" name="script"></textarea>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr >
+                                <td colspan="2" >
+                                    <input style="position: relative;left:40%" type="submit" value="Guardar Script" class="btn btn-default"/>
+                                </td>                               
+                            </tr>
+                        </table>
+                           
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </form>
+        </div>
+    
+   
+{% endblock contenido%}

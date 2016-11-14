@@ -2,13 +2,10 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+//use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InfoEquipo
- *
- * @ORM\Table(name="INFO_EQUIPO", uniqueConstraints={@ORM\UniqueConstraint(name="ID_EQUIPO_UNIQUE", columns={"ID_EQUIPO"})}, indexes={@ORM\Index(name="UBICACION_ID_idx", columns={"UBICACION_ID"})})
- * @ORM\Entity
  */
 class InfoEquipo
 {

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+    {{ parent() }}
+    <script src="{{ asset('./bundles/App/js/administracion/scripts/index.js') }}"></script>
+{% endblock %} 
+ 
+{% block contenido %}
+    <div id="page-wrapper">
+            <br>           
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-file-code-o"></i>&nbsp;<b style="font-size: 16px;">Scripts</b>                
+                <a href="{{path('newScript')}}" style="float: right" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper">                   
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="scriptsDataTable" >
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre Script</th>
+                                    <th>Descripcion</th>
+                                    <th>Estado</th>  
+                                    <th hidden="true">Script</th> 
+                                    <th>Usr Creacion</th>
+                                    <th>Fe Creacion</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set cont = 1 %} 
+                                {% for script in scripts %}
+                                <tr>
+                                    <td>{{cont}}</td>
+                                    <td>{{script.nombreScript}}</td>
+                                    <td>{{script.descripcion}}</td>
+                                    <td hidden="true"><input type="hidden" id="id_{{script.idScript}}" value="{{script.script}}"/></td>                                   
+                                    <td>{{script.estado}}</td>
+                                    <td>{{script.usrCreacion}}</td>
+                                    <td>{{script.feCreacion | date('m/d/Y H:i:s')}}</td>
+                                    <td>
+                                        <a class="fa fa-search" style="cursor: pointer;" onclick="showComands({{script.idScript}})"></a>&nbsp;
+                                        <a class="fa fa-pencil" href="{{path('editScript',{'id':script.idScript})}}"></a>&nbsp;
+                                        <a class="fa fa-times" href="{{path('deleteScript',{'id':script.idScript})}}"></a>
+                                    </td>
+                                </tr>
+                                    {% set cont = cont + 1 %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+{% endblock contenido%}

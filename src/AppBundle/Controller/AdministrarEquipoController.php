@@ -32,8 +32,12 @@ class AdministrarEquipoController extends Controller
         
         $objEquipo = $em->getRepository("AppBundle:InfoEquipo")->find($id);
         
+        $objEquipoHist = $em->getRepository("AppBundle:InfoEquipo")
+                            ->getArrayEquipoHistorial($id);       
+        
         return $this->render('AppBundle:administracion/equipos:show.html.twig',
-                             array('equipo'     =>$objEquipo)); 
+                             array('equipo'     =>$objEquipo,
+                                   'equipoHist' =>$objEquipoHist)); 
         
     }
     
