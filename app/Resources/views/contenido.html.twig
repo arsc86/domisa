@@ -9,16 +9,25 @@
     <div class="row">
          {% for ubicacion in ubicaciones %}
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
+                {%if ubicacion.caidos == 0 %}                    
+                    <div class="panel panel-primary">
+                {%else%}        
+                    <div class="panel panel-red">
+                {%endif%}        
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-tasks fa-4x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">{{ubicacion.numeroEquipos}}</div>
+                                <div class="huge">{{ubicacion.numeroEquipos}}
+                                    {%if ubicacion.caidos != 0 %}                    
+                                    <i class="fa fa-warning"></i>
+                                    {%endif%}
+                                </div>
                                 <div>{{ubicacion.nombre}}</div>
                                 <div>{{ubicacion.descripcion}}</div>
+                                
                             </div>
                         </div>
                     </div>

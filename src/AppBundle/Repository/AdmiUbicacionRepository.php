@@ -15,6 +15,9 @@ class AdmiUbicacionRepository extends EntityRepository{
                 ubicacion.idUbicacion,
                 ubicacion.nombre,
                 ubicacion.descripcion,
+                (SELECT count(e1) FROM 
+                    AppBundle:InfoEquipo e1 
+                    WHERE e1.ubicacion = ubicacion.idUbicacion and e1.status = 'DOWN') caidos,
                 (SELECT count(e) FROM 
                     AppBundle:InfoEquipo e 
                     WHERE e.ubicacion = ubicacion.idUbicacion) numeroEquipos
